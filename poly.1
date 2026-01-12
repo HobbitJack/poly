@@ -1,0 +1,51 @@
+.TH POLY "1" "January 2026" "poly v1.0.0" "User Commands"
+.SH NAME
+poly \- compute polynomial roots
+.SH SYNOPSIS
+.SY
+.B poly
+[\fI\,OPTION\/\fR]... [\fI\,COEFFICIENT\/\fR [\fI\,COEFFICIENT\/\fR]...]
+.YS
+.SH DESCRIPTION
+.B poly
+computes the roots of generalized polynomials.
+\fICOEFFICIENT\fRs are read in assuming decreasing term order, which means the first \fICOEFFICIENT\fR is the coefficient for the highest order term.
+At least two \fICOEFFICIENT\fRs must be given.
+.br
+If no \fICOEFFICIENT\fRs are specified on the command line, read them from standard input.
+.SH OPTIONS
+Mandatory options to long options are mandatory for short options too.
+.TP
+\fB\-l\fR, \fB\-\-loose\-exit\fR
+Change the behavior of the exit status.
+Normally, the program will exit non-zero if any invalid input is provided.
+This flag will change the behavior such that the program will only exit non-zero if a fatal error is encountered.
+.TP
+\fB\-r\fR, \fB\-\-reverse\fR
+Reverse the order in which coefficients are read; that is, read coefficients as increasing term order.
+This means the first coefficient is the constant term, and the second the linear term, etc.
+.TP
+\fB\-s\fR, \fB\-\-silent\fR
+Supress all error messages.
+.TP
+\fB\-V\fR, \fB\-\-verbose\fR
+Print the polynomial, in standard form, along with its roots.
+The polynomial is written in decreasing term order.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print a short help message and exit.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Print version information and exit.
+.PP
+.SH AUTHOR
+Written by Jack R. Uteg.
+.SH COPYRIGHT
+Copyright \(co 2026 Jack Renton Uteg.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH SEE ALSO
+.TP
+\fBcollatz(1)\fR, \fBfactor(1)\fR, \fBfib(1)\fR
