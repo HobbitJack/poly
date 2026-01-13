@@ -7,7 +7,7 @@ PREFIX 	?= /usr/local
 all:	poly
 
 poly:	poly.c poly.g.c poly.g.h poly.l.c poly.l.h
-	cc -g -std=c17 -lm -lgsl -o $@ poly.c poly.g.c poly.l.c
+	cc -std=c17 -lm -lgsl -o $@ poly.c poly.g.c poly.l.c
 
 poly.l.c poly.l.h:	poly.l
 	lex -D_POSIX_C_SOURCE=202405L -o poly.l.c poly.l
@@ -18,12 +18,12 @@ poly.g.c poly.g.h:	poly.g
 	mv -f poly.g.c.tmp poly.g.c
 
 clean:
-	rm -f poly poly.g.? poly.l.? poly*.tar.gz poly.1.gz
+	rm -f poly poly.g.? poly.l.? poly*.tar.gz poly.1.gz Makefile
 
 source:
 	rm -f poly_source.tar.gz
 	tar -cf poly_source.tar poly.c poly.g poly.l poly.1 makefile
-	gzip poly.tar
+	gzip poly_source.tar
 
 release:	poly
 	rm -f poly.tar.gz
