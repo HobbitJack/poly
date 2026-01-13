@@ -213,10 +213,21 @@ main(int argc, char *argv[])
 					
 					continue;
 				}
-				if (realloc(coefficients, len*sizeof(double)) == NULL)
+				
+				errno = 0;
+				if (((r_coefficients = realloc(coefficients, (len+1)*sizeof(double))) == NULL) || errno)
 				{
 					perror(progname);
-					return 1;
+					status = 1;
+
+					len = 0;
+					free(coefficients);
+					coefficients = calloc(1, sizeof(double));
+					continue;
+				}
+				else
+				{
+					coefficients = r_coefficients;
 				}
 			}
 			else
