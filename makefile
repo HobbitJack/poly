@@ -7,10 +7,10 @@ PREFIX 	?= /usr/local
 all:	poly
 
 poly:	poly.c poly.g.c poly.g.h poly.l.c poly.l.h
-	cc -std=c17 -lm -lgsl -o $@ poly.c poly.g.c poly.l.c
+	c99 -lm -lgsl -o $@ poly.c poly.g.c poly.l.c
 
 poly.l.c poly.l.h:	poly.l
-	lex -D_POSIX_C_SOURCE=202405L -o poly.l.c poly.l
+	lex -D_POSIX_C_SOURCE=200809L -o poly.l.c poly.l
 
 poly.g.c poly.g.h:	poly.g
 	gengetopt <poly.g
