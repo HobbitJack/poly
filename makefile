@@ -22,13 +22,13 @@ clean:
 
 source:
 	rm -f poly_source.tar.gz
-	tar -cf poly_source.tar poly.c poly.g poly.l poly.1 makefile
+	tar -cf poly_source.tar poly.c poly.g poly.l poly.1 makefile COPYING
 	gzip poly_source.tar
 
 release:	poly
 	rm -f poly.tar.gz
 	sed 6,33d makefile | sed '2c .PHONY:	install uninstall'> Makefile
-	tar -cf poly.tar poly poly.c poly.g poly.l poly.1 makefile
+	tar -cf poly.tar poly poly.c poly.g poly.l poly.1 makefile COPYING
 	gzip poly.tar
 
 install:	poly
